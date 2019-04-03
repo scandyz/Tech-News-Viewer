@@ -314,6 +314,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="BtA-SF-9Fg" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rOr-W5-wnA">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -329,7 +330,7 @@
         <!--Saved Web View Controller-->
         <scene sceneID="LgS-R2-hJp">
             <objects>
-                <viewController id="2XQ-1Q-EQc" customClass="SavedWebViewController" customModule="Tech_News_Viewer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="2XQ-1Q-EQc" customClass="SavedWebViewController" customModule="Tech_News_Viewer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8l1-Bb-Gut">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -15,17 +15,25 @@ class NewsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let urlString = "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=96389ba7f6c2416cbddfe9bf4e679d3a"
+        refreshControl = UIRefreshControl()
+        refreshControl?.backgroundColor = .white
+        refreshControl?.tintColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        refreshControl?.addTarget(self, action: #selector(getData), for: .valueChanged)
         
         DispatchQueue.global(qos: .userInitiated).async {[weak self] in
-            if let url = URL(string: urlString) {
-                if let data = try? Data(contentsOf: url) {
-                    self?.parse(json: data)
-                    return
-                }
-            }
-            self?.showError()
+            self?.getData()
         }
+    }
+    
+    @objc func getData() {
+        let urlString = "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=96389ba7f6c2416cbddfe9bf4e679d3a"
+        if let url = URL(string: urlString) {
+            if let data = try? Data(contentsOf: url) {
+                parse(json: data)
+                return
+            }
+        }
+        showError()
     }
     
     func parse(json: Data) {
@@ -35,6 +43,7 @@ class NewsTableViewController: UITableViewController {
             
             DispatchQueue.main.async { [weak self] in
                 self?.tableView.reloadData()
+                self?.refreshControl?.endRefreshing()
             }
         }
     }
